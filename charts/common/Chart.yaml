@@ -1,0 +1,7 @@
+apiVersion: v2
+name: common
+description: Helm library with all the common resources used by the included Charts
+
+type: library
+
+version: 0.1.0

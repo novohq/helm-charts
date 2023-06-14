@@ -1,0 +1,15 @@
+apiVersion: v2
+
+name: cronjob
+description: A Helm chart for creating Kubernetes CronJobs
+icon: file://icon.svg
+
+# Chart Version
+version: 0.1.0
+
+appVersion: "1.0.0"
+
+dependencies:
+- name: common
+  version: "*"
+  repository: file://../common
