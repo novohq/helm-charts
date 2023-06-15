@@ -1,0 +1,73 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "common.fullname" . }}
+  labels:
+    {{- include "common.labels" . | nindent 4 }}
+spec:
+  # CronJob-Specific attributes for Job
+  schedule: {{ .Values.schedule | quote }}
+  successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .Values.failedJobsHistoryLimit }}
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      backoffLimit: {{ .Values.backoffLimit }}
+      template:
+        metadata: {{- include "common.podMetadata" . | nindent 10 }}
+        spec:
+          {{- include "common.podConfig" . | nindent 10 }}
+          restartPolicy: {{ .Values.restartPolicy }}
+          {{- if .Values.initContainers }}
+          initContainers:
+          {{- range $name, $config := .Values.initContainers }}
+            - name: {{ $name }}
+              {{- include "common.containerConfig" . | nindent 14 }}
+              {{- with $config.command }}
+              command: {{ $config.command | toYaml | nindent 16 }}
+              {{- end }}
+              {{- with $config.args }}
+              args: {{ $config.args | toYaml | nindent 16 }}
+              {{- end }}
+              {{- with $config.volumeMounts }}
+              volumeMounts: {{ $config.volumeMounts | toYaml | nindent 16 }}
+              {{- end }}
+          {{- end }}
+          {{- end }}
+          containers:
+          {{- range $name, $config := .Values.containers }}
+            - name: {{ $name }}
+              {{- include "common.containerConfig" ( dict "root" $ "container" $config ) | nindent 14 }}
+              {{- with $config.command }}
+              command:
+                {{- . | toYaml | nindent 16 }}
+              {{- end }}
+              {{- with $config.args }}
+              args:
+                {{- . | toYaml | nindent 16 }}
+              {{- end }}
+              {{- with $config.volumeMounts }}
+              volumeMounts:
+                {{- . | toYaml | nindent 16 }}
+              {{- end }}
+              {{- with $config.ports }}
+              ports:
+                {{- $config.ports | toYaml | nindent 16 }}
+              {{- end }}
+              {{- with $config.livenessProbe }}
+              livenessProbe:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with $config.readinessProbe }}
+              readinessProbe:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with $config.readinessProbe }}
+              startupProbe:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+          {{- end }}
+          {{- with .Values.volumes }}
+          volumes:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}

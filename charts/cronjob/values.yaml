@@ -1,0 +1,41 @@
+global:
+  image:
+    pullSecrets: []
+    pullPolicy: IfNotPresent
+  # ConfigMap or secret from env name override
+  configMapNameOverride: {}
+
+# CronJob Specific values
+# Cron expression to set the frequency of the CronJob execution
+schedule: "0 6 * * *"
+successfulJobsHistoryLimit: 1
+failedJobsHistoryLimit: 2
+# By default, disallow running concurrent CronJobs
+concurrencyPolicy: "Forbid"
+
+# Job Values
+backoffLimit: 0
+
+restartPolicy: Never
+
+# ServiceAccountValues
+serviceAccount:
+  create: true
+  annotations: {}
+
+# Others
+nameOverride: ""
+fullnameOverride: ""
+
+initContainers: {}
+containers: {}
+
+# Allow the user to conciously setup the resources needs for the given CronJob
+# Example:
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
+resources: {}
