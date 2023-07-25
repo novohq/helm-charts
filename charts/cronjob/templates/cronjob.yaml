@@ -22,7 +22,7 @@ spec:
           initContainers:
           {{- range $name, $config := .Values.initContainers }}
             - name: {{ $name }}
-              {{- include "common.containerConfig" . | nindent 14 }}
+              {{- include "common.containerConfig" ( dict "root" $ "container" $config ) | nindent 14 }}
               {{- with $config.command }}
               command: {{ $config.command | toYaml | nindent 16 }}
               {{- end }}

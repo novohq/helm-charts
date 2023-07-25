@@ -5,7 +5,7 @@ description: A Helm chart for creating Kubernetes CronJobs
 icon: file://icon.svg
 
 # Chart Version
-version: 0.1.0
+version: 0.1.1
 
 appVersion: "1.0.0"
 
