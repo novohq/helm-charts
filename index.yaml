@@ -13,6 +13,20 @@ entries:
   cronjob:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-07-25T17:23:15.50855967Z"
+    dependencies:
+    - name: common
+      repository: file://../common
+      version: '*'
+    description: A Helm chart for creating Kubernetes CronJobs
+    digest: 4ab9bec6aded8d7af0d2458f43d13820d1e32ca384a86b4bf8d1db214b5b64c5
+    icon: file://icon.svg
+    name: cronjob
+    urls:
+    - https://github.com/novohq/helm-charts/releases/download/cronjob-0.1.1/cronjob-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-06-15T00:51:58.425961263Z"
     dependencies:
     - name: common
@@ -25,4 +39,4 @@ entries:
     urls:
     - https://github.com/novohq/helm-charts/releases/download/cronjob-0.1.0/cronjob-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-15T00:51:58.425965263Z"
+generated: "2023-07-25T17:23:15.508567171Z"
