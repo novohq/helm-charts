@@ -4,7 +4,7 @@
 
 Once Helm has been set up correctly, add the repo as follows:
 
-  helm repo add <alias> https://jaime-novo.github.io/helm-charts
+  helm repo add <alias> https://novohq.github.io/helm-charts
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.  You can then run `helm search repo <alias>` to see the charts.
 
