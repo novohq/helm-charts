@@ -1,5 +1,24 @@
 apiVersion: v1
 entries:
+  adot-exporter-for-eks-on-ec2:
+  - apiVersion: v2
+    appVersion: 0.35.0
+    created: "2024-01-19T17:30:25.361433863Z"
+    description: A Helm chart for collecting metrics using ADOT Collector to send
+      to AWS monitoring services.
+    digest: f8143553a8615e83a25c3e66420c3f12701ddd28fe085adbdd9d91fe0e2d0d7d
+    home: https://github.com/aws-observability/aws-otel-helm-charts/adot-exporter-for-eks-on-ec2
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - email: bryaag@amazon.com
+      name: Bryan Aguilar
+    name: adot-exporter-for-eks-on-ec2
+    sources:
+    - https://github.com/aws-observability/aws-otel-helm-charts/adot-exporter-for-eks-on-ec2
+    type: application
+    urls:
+    - https://github.com/novohq/helm-charts/releases/download/adot-exporter-for-eks-on-ec2-0.1.0/adot-exporter-for-eks-on-ec2-0.1.0.tgz
+    version: 0.1.0
   common:
   - apiVersion: v2
     created: "2023-06-15T00:51:58.290587399Z"
@@ -39,4 +58,4 @@ entries:
     urls:
     - https://github.com/novohq/helm-charts/releases/download/cronjob-0.1.0/cronjob-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-25T17:23:15.508567171Z"
+generated: "2024-01-19T17:30:25.361443701Z"
